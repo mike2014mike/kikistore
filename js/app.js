@@ -40,6 +40,23 @@ var allProduct = [{
     img: 'images/product_5.jpg'
 }]
 
+$(document).ready(function () {
+    $(".search_input").keypress(function (event) {
+        if (event.keyCode == 13) {
+            $(".search_button").trigger("click");
+        }
+    });
+
+    // $("#gosearch").click(function () {
+
+    //     //停止所有的 form submit 事件
+
+    //     // $("form").submit(function () {
+    //     //     return false
+    //     // });
+    // });
+});
+
 var List = new Vue({
     el: '#page-list',
     data: {
