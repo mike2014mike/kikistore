@@ -117,7 +117,7 @@ var List = new Vue({
             } else {
                 self.product = allProduct;
             }
-
+            $(".menu_close").trigger("click");
         }
     },
     computed: {
