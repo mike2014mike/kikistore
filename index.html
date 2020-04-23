@@ -74,13 +74,11 @@
 
 			</div>
 			<div class="menu_search">
-				<form action="#" class="header_search_form menu_mm">
-					<input type="search" class="search_input menu_mm" placeholder="Search" required="required" v-model="keyword">
-					<button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm"
-						@click="searchProduct()">
-						<i class="fa fa-search menu_mm" aria-hidden="true"></i>
-					</button>
-				</form>
+				<input type="search" class="search_input menu_mm" placeholder="Search" required="required" v-model="keyword">
+				<button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm"
+					@click="searchProduct()">
+					<i class="fa fa-search menu_mm" aria-hidden="true"></i>
+				</button>
 			</div>
 			<nav class="menu_nav">
 				<ul class="menu_mm">
@@ -104,15 +102,6 @@
 
 		<div class="sidebar">
 
-			<!-- Info -->
-			<div class="info">
-				<div class="info_content d-flex flex-row align-items-center justify-content-start">
-
-
-
-				</div>
-			</div>
-
 			<!-- Logo -->
 			<div class="sidebar_logo">
 				<a href="#">
@@ -130,11 +119,11 @@
 
 			<!-- Search -->
 			<div class="search">
-				<form action="#" class="search_form" id="sidebar_search_form">
+				<div class="search_form" id="sidebar_search_form">
 					<input type="text" class="search_input" placeholder="Search" required="required" v-model="keyword">
 					<button class="search_button" @click="searchProduct()"><i class="fa fa-search"
 							aria-hidden="true"></i></button>
-				</form>
+				</div>
 			</div>
 
 			<!-- Cart -->
