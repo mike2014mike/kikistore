@@ -272,13 +272,13 @@ section
 {
 	display: block;
 	line-height: 45px;
-	color: #bbe432;
+	color: #ee4d2d;
 	font-size: 14px;
 	font-weight: 600;
 }
 .button_1:hover
 {
-	background: #bbe432;
+	background: #ee4d2d;
 }
 .button_1:hover a
 {
@@ -371,7 +371,7 @@ section
 .has_children:hover > .dropdown_text,
 .has_children ul .dropdown_text:hover
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .dropdown_arrow
 {
@@ -418,7 +418,7 @@ section
 }
 .has_children:hover i
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .has_children ul li:not(:last-child)
 {
@@ -450,14 +450,14 @@ section
 }
 .sidebar_logo a > div
 {
-	border: solid 2px #bbe432;
+	border: solid 2px #ee4d2d;
 	padding-top: 13px;
 	padding-bottom: 13px;
 	text-align: center;
 	font-size: 36px;
 	font-weight: 700;
 	line-height: 0.75;
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .sidebar_logo a > div span
 {
@@ -502,11 +502,11 @@ section
 }
 .sidebar_nav ul li a:hover
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .sidebar_nav ul li:hover a i
 {
-	color: #bbe432;
+	color: #ee4d2d;
 	-webkit-transform: translateX(10px);
 	-moz-transform: translateX(10px);
 	-ms-transform: translateX(10px);
@@ -546,7 +546,7 @@ section
 .search_input:focus,
 .search_input:hover
 {
-	border-bottom: solid 1px #bbe432;
+	border-bottom: solid 1px #ee4d2d;
 }
 .search_button
 {
@@ -568,7 +568,7 @@ section
 }
 .search_button:hover
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .search_button:active
 {
@@ -644,7 +644,7 @@ section
 	width: 23px;
 	height: 23px;
 	border-radius: 50%;
-	background: #bbe432;
+	background: #ee4d2d;
 	text-align: center;
 	line-height: 23px;
 	font-size: 12px;
@@ -698,14 +698,14 @@ section
 }
 .header_logo a > div
 {
-	border: solid 2px #bbe432;
+	border: solid 2px #ee4d2d;
 	padding-top: 13px;
 	padding-bottom: 13px;
 	text-align: center;
 	font-size: 18px;
 	font-weight: 700;
 	line-height: 0.75;
-	color: #bbe432;
+	color: #ee4d2d;
 	padding-left: 14px;
 	padding-right: 16px;
 }
@@ -742,7 +742,7 @@ section
 }
 .header_nav ul li a:hover
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .header_extra
 {
@@ -785,7 +785,7 @@ section
 }
 .hamburger:hover i
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 
 /*********************************
@@ -854,7 +854,7 @@ section
 }
 .menu_close:hover div
 {
-	background: #bbe432;
+	background: #ee4d2d;
 }
 .menu .logo
 {
@@ -880,7 +880,7 @@ section
 }
 .menu_nav ul li a:hover
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .menu_search
 {
@@ -955,7 +955,7 @@ section
 .menu .search_input:focus,
 .menu .search_input:hover
 {
-	border-bottom: solid 2px #bbe432;
+	border-bottom: solid 2px #ee4d2d;
 }
 .header_search_button
 {
@@ -985,7 +985,7 @@ section
 }
 .header_search_button:hover i
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .menu_extra
 {
@@ -1023,7 +1023,7 @@ section
 }
 .menu_social ul li a i:hover
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 
 /*********************************
@@ -1113,7 +1113,7 @@ section
 }
 .home_slider_nav:hover
 {
-	background: #bbe432;
+	background: #ee4d2d;
 }
 .home_slider_prev
 {
@@ -1138,7 +1138,7 @@ section
 .home_slider .owl-dots .owl-dot.active span,
 .home_slider .owl-dots .owl-dot:hover span
 {
-	background: #bbe432;
+	background: #ee4d2d;
 }
 
 /*********************************
@@ -1181,7 +1181,7 @@ section
 }
 .box_title:hover
 {
-	background: #bbe432;
+	background: #ee4d2d;
 }
 .box_title a
 {
@@ -1240,7 +1240,7 @@ section
 }
 .categories_list li a:hover
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 
 /*********************************
@@ -1251,7 +1251,7 @@ section
 {
 	width: 100%;
 	background: #414141;
-	margin-top: 95px;
+	margin-top: 80px;
 	padding-bottom: 99px;
 }
 .products_container
@@ -1279,7 +1279,7 @@ section
 	width: 100%;
 	height: 100%;
 	background: transparent;
-	border: solid 5px #bbe432;
+	border: solid 5px #ee4d2d;
 	visibility: hidden;
 	opacity: 0;
 	pointer-events: none;
@@ -1316,7 +1316,7 @@ section
 }
 .product.hot .product_tag
 {
-	background: #bbe432;
+	background: #ee4d2d;
 }
 .product.sale .product_tag
 {
@@ -1372,7 +1372,7 @@ section
 }
 .product_button:hover
 {
-	background: #bbe432;
+	background: #ee4d2d;
 }
 .product_button a
 {
@@ -1437,7 +1437,7 @@ section
 .newsletter_input:hover,
 .newsletter_input:focus
 {
-	border-bottom: solid 2px #bbe432;
+	border-bottom: solid 2px #ee4d2d;
 }
 .newsletter_button
 {
@@ -1446,7 +1446,7 @@ section
 	right: 0;
 	width: 138px;
 	height: 45px;
-	background: #bbe432;
+	background: #ee4d2d;
 	color: #1a1a1a;
 	font-size: 14px;
 	font-weight: 700;
@@ -1520,14 +1520,14 @@ section
 }
 .footer_logo a > div
 {
-	border: solid 2px #bbe432;
+	border: solid 2px #ee4d2d;
 	padding-top: 13px;
 	padding-bottom: 13px;
 	text-align: center;
 	font-size: 48px;
 	font-weight: 700;
 	line-height: 0.75;
-	color: #bbe432;
+	color: #ee4d2d;
 	padding-left: 25px;
 	padding-right: 26px;
 }
@@ -1603,7 +1603,7 @@ section
 	width: 7px;
 	height: 7px;
 	background: transparent;
-	border: solid 2px #bbe432;
+	border: solid 2px #ee4d2d;
 }
 .footer_list ul li:not(:last-child)
 {
@@ -1671,7 +1671,7 @@ section
 }
 .footer_blog_title a:hover
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .footer_blog_date
 {
@@ -1690,7 +1690,7 @@ section
 {
 	font-size: 12px;
 	font-weight: 500;
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .footer_contact
 {
@@ -1710,7 +1710,7 @@ section
 {
 	font-size: 14px;
 	font-weight: 700;
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .footer_contact_list ul li div
 {
@@ -1750,7 +1750,7 @@ section
 }
 .footer_social_item:hover .footer_social_icon i
 {
-	color: #bbe432;
+	color: #ee4d2d;
 }
 .footer_social_title
 {
@@ -1786,4 +1786,17 @@ section
 	font-family: 'Poppins', sans-serif;
 	font-size: 12px;
 	color: #787878;
+}
+
+.highlight {
+  background-color: red;
+  color: white;
+  padding: 0px 5px;
+}
+
+.card:hover {
+	border: 1px solid #ee4d2d;
+	box-shadow: -1px 9px 40px -12px rgba(238,77,45, 0.75);
+	transform: translate(0,-2px);
+	transition-delay: 0s !important;
 }
