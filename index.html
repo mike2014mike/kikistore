@@ -7,10 +7,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="aStar Fashion Template Project">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.3/bootstrap.css">
-	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-	<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+	<link rel="stylesheet" type="text/css" href="./styles/bootstrap-4.1.3/bootstrap.css">
+	<link href="./plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="./styles/main_styles.css">
+	<link rel="stylesheet" type="text/css" href="./styles/responsive.css">
 </head>
 
 <body>
@@ -47,8 +47,8 @@
 
 					<!-- Cart -->
 					<div class="cart d-flex flex-row align-items-center justify-content-start">
-						<div class="cart_icon"><a href="cart.html">
-								<img src="images/bag.png" alt="">
+						<div class="cart_icon"><a href="#" data-toggle="modal" data-target="#exampleModal">
+								<img src="images/bag.png" title="購物車">
 								<div class="cart_num">{{list.length}}</div>
 							</a></div>
 						<div class="cart_price">${{totalPrice}}</div>
@@ -74,7 +74,7 @@
 
 			</div>
 			<div class="menu_search">
-				<input type="search" class="search_input menu_mm" placeholder="Search" required="required" v-model="keyword">
+				<input type="search" class="search_input menu_mm" placeholder="輸入關鍵字" required="required" v-model="keyword">
 				<button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm"
 					@click="searchProduct()">
 					<i class="fa fa-search menu_mm" aria-hidden="true"></i>
@@ -120,7 +120,7 @@
 			<!-- Search -->
 			<div class="search">
 				<div class="search_form" id="sidebar_search_form">
-					<input type="text" class="search_input" placeholder="Search" required="required" v-model="keyword">
+					<input type="text" class="search_input" placeholder="輸入關鍵字" required="required" v-model="keyword">
 					<button class="search_button" @click="searchProduct()"><i class="fa fa-search"
 							aria-hidden="true"></i></button>
 				</div>
@@ -128,8 +128,8 @@
 
 			<!-- Cart -->
 			<div class="cart d-flex flex-row align-items-center justify-content-start">
-				<div class="cart_icon"><a href="cart.html">
-						<img src="images/bag.png" alt="">
+				<div class="cart_icon"><a href="#" data-toggle="modal" data-target="#exampleModal">
+						<img src="images/bag.png" title="購物車">
 						<div class="cart_num">{{list.length}}</div>
 					</a></div>
 				<!-- <div class="cart_text">bag</div> -->
@@ -147,19 +147,42 @@
 				<div class="container">
 					<div class="products_container">
 						<div class="row">
-							<div class="col-md-4 col-sm-12" style="margin-bottom: 10px;" v-for="item in product">
+							<div class="col-lg-3 col-md-4 col-sm-6" style="margin-bottom: 10px;" v-for="item in filtered_product">
 								<div class="card">
-									<img :src="item.img" :title="item.name" class="card-img-top">
+									<img :src="'/uploads/product/'+item.img" :title="item.name" class="card-img-top">
+									<div
+										style="background-color: rgba(238,77,45, 0.8); color:white; margin-top: -30px; padding:5px; width:30%; text-align: center;">
+										庫存{{ item.inventory }}</div>
 									<div class="card-body">
-										<h5 class="card-title">{{ item.name }}</h5>
-										<p class="card-text">${{ item.price }}</p>
-										<p class="card-text">庫存{{ item.stock }}件，賣出{{ item.sales }}件</p>
-										<div class="text-center" v-if="item.stock>0">
-											<a href="#" class="btn btn-primary" @click="addToCart(item)">加入購物車</a>
+										<h5 class="card-title" style="color: #000000; min-height: 40px;" v-html="item.name"></h5>
+
+										<div class="row">
+											<div class="col-8">
+												<h3 style="color: #ee4d2d;">${{ item.price }}</h3>
+												<!-- <span class="card-text" style="color: #ffffff; 
+													background-color: #ee4d2d; border-radius: 10px;
+													padding: 2px 10px 2px 10px;">已賣出{{ item.sales }}</span> -->
+											</div>
+											<div class="col-4">
+												<div class="text-center" v-if="item.inventory>0">
+													<button href="#" class="btn btn-primary btn-sm" @click="addToCart(item)"
+														style="background-color: #ee4d2d; border-color: #ee4d2d;">
+														<img src="images/bag.png" width="15" title="加入購物車" />
+													</button>
+
+												</div>
+												<div class="text-center" v-else>
+													<button href="#" class="btn btn-secondary btn-sm disabled"><img src="images/bag.png"
+															title="庫存不足" /></button>
+
+												</div>
+												<!-- <div class="text-center">庫存{{ item.inventory }}</div> -->
+											</div>
 										</div>
-										<div class="text-center" v-else>
-											<a href="#" class="btn btn-danger disabled">庫存不足</a>
-										</div>
+
+
+
+
 
 									</div>
 								</div>
@@ -173,14 +196,287 @@
 		</div>
 
 
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">購物車</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<table class="table table-striped table-dark">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">名稱</th>
+										<th scope="col">單價</th>
+										<th scope="col">數量</th>
+										<th scope="col">刪除</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr v-for="(item,index) in list">
+										<th scope="row">{{index}}</th>
+										<td v-html="item.name"></td>
+										<td v-html="item.price"></td>
+										<td>
+											<button type="button" class="btn btn-sm" @click="minus(item)" title="減少">
+												<i class="fa fa-minus" aria-hidden="true"></i>
+											</button>
+											<span v-html="item.count"></span>
+											<button type="button" class="btn btn-sm" @click="plus(item)" title="增加">
+												<i class="fa fa-plus" aria-hidden="true"></i>
+											</button>
+										</td>
+										<td>
+											<button type="button" class="btn btn-danger btn-sm" @click="delItem(item.id)" title="刪除">
+												<i class="fa fa-trash" aria-hidden="true"></i>
+											</button>
+										</td>
+									</tr>
+
+								</tbody>
+								<tfoot>
+									<tr>
+										<td></td>
+										<td>總價</td>
+										<td>{{totalPrice}}</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+						<button type="button" class="btn btn-primary">下單</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="styles/bootstrap-4.1.3/popper.js"></script>
-	<script src="styles/bootstrap-4.1.3/bootstrap.min.js"></script>
-	<script src="js/custom.js"></script>
-	<script src="js/vue.min.js"></script>
-	<script src="js/app.js"></script>
+	<script src="./js/jquery-3.2.1.min.js"></script>
+	<script src="./styles/bootstrap-4.1.3/popper.js"></script>
+	<script src="./styles/bootstrap-4.1.3/bootstrap.min.js"></script>
+	<script src="./js/custom.js"></script>
+	<script src="./js/vue.min.js"></script>
+	<script>
+		var allProduct = [
+			{
+				id: 1,
+				name: "油脂調護植萃爽膚水",
+				price: 880,
+				description: "產品主成分：黃芩、蒲公英、金銀花",
+				inventory: 100,
+				sales: null,
+				img: "product_1.jpg"
+			},
+			{
+				id: 2,
+				name: "植萃保濕洗卸凝膠",
+				price: 980,
+				description: "兼具卸妝、清潔、舒緩、保濕四效合一，其獨特微膠夾帶包覆原理能徹底清除毛孔內的污垢與臉部彩妝，即刻恢復清爽潔淨，不含皂鹼、香料與酒精，雷射術後及敏感性肌膚均可使用。",
+				inventory: 200,
+				sales: 40,
+				img: "product_2.jpg"
+			},
+			{
+				id: 3,
+				name: "植萃水合保濕霜",
+				price: 1580,
+				description: "產品主成分：百合、山藥、銀耳",
+				inventory: 300,
+				sales: 10,
+				img: "product_3.jpg"
+			},
+			{
+				id: 4,
+				name: "完美無瑕植萃保濕BB霜",
+				price: 880,
+				description: "產品主成分：銀耳、白百合、銀耳、野山藥、玻尿酸",
+				inventory: 400,
+				sales: 10,
+				img: "product_4.jpg"
+			},
+			{
+				id: 5,
+				name: "植萃水合保濕精華液",
+				price: 1680,
+				description: "產品主成分：百合、山藥、銀耳",
+				inventory: 500,
+				sales: 20,
+				img: "product_5.jpg"
+			}
+		];
+
+
+		Array.prototype.removeByValue = function (val) {
+			for (var i = 0; i < this.length; i++) {
+				if (this[i] === val) {
+					this.splice(i, 1);
+					i--;
+				}
+			}
+			return this;
+		}
+
+		var List = new Vue({
+			el: '#page-list',
+			data: {
+				product: [],
+				list: [],
+				ids: [],
+				totalPrice: 0,
+				keyword: ""
+			},
+			created() {
+				var self = this;
+				self.product = JSON.parse(JSON.stringify(allProduct));
+				// var url = "/api/product/all";   //存取Json的網址 
+				// $.ajax({
+				// 	url: url,
+				// 	type: "get",
+				// 	cache: false,
+				// 	dataType: 'json',
+				// 	success: function (data) {
+				// 		allProduct = data.product;
+				// 		// console.log(allProduct);
+				// 		self.product = JSON.parse(JSON.stringify(allProduct));
+				// 	},
+
+				// 	error: function (xhr, ajaxOptions, thrownError) {
+				// 		alert(xhr.status);
+				// 		alert(thrownError);
+				// 	}
+				// });
+
+			},
+			methods: {
+        /**
+        * @method 添加到购物车
+        * @param {Object} good 商品
+        */
+				addToCart(good) {
+
+					if (this.ids.indexOf(good.id) == -1) {
+						if (good.inventory > 0) {
+							good.count = 1;
+							this.list.push(good);
+							this.ids.push(good.id);
+						}
+						else { alert("庫存不足！") }
+					} else {
+						this.list.map(function (ele) {
+							if (ele.name == good.name) {
+								if (good.inventory > 0) {
+									ele.count += 1;
+								}
+								else { alert("庫存不足！") }
+							}
+						})
+					}
+					this.culTotalPrice();
+				},
+				plus(good) {
+					this.list.map(function (ele) {
+						if (ele.name == good.name) {
+							if (good.inventory > 0) {
+								ele.count += 1;
+							}
+							else { alert("庫存不足！") }
+						}
+					})
+					this.culTotalPrice();
+				},
+				minus(good) {
+					this.list.map(function (ele) {
+						if (good.count == 1) return;
+						if (ele.name == good.name) {
+							if (good.inventory > 0) {
+								ele.count -= 1;
+							}
+							else { alert("庫存不足！") }
+						}
+					})
+					this.culTotalPrice();
+				},
+				delItem(id) {
+					// alert(id);
+					var filtered = this.list.filter(function (ele) {
+						return ele.id != id;
+					})
+					this.list = filtered;
+					this.ids.removeByValue(id);
+					console.log(this.list);
+					this.culTotalPrice();
+				},
+        /**
+        * @method 計算總價
+        */
+				culTotalPrice() {
+					var num = 0;
+					this.list.forEach(function (item) {
+						num += parseFloat(item.price * item.count);
+					});
+					this.totalPrice = num;
+				},
+        /**
+        * @method 關鍵字搜尋
+        */
+				searchProduct() {
+					var self = this;
+					if (self.keyword != "") {
+						self.product = allProduct.filter(function (item) {
+							return item.name.toLowerCase().indexOf(self.keyword.toLowerCase()) != -1;
+						});
+					} else {
+						self.product = allProduct;
+					}
+					$(".menu_close").trigger("click");
+				}
+			},
+			computed: {
+				filtered_product() {
+					var _this2 = this;
+
+					return this.product.filter(function (p) {
+						var field = ["name"];
+						var contain_flag = false;
+						field.forEach(function (f) {
+							if (p[f].toLowerCase().indexOf(_this2.keyword.toLowerCase()) != -1) contain_flag = true;
+						});
+						return contain_flag;
+					}).map(function (p) {
+						// p.description = p.description.substr(0, 90) + "...";
+						return p;
+					}).map(function (p) {
+						if (_this2.keyword == "") return p;
+						var cache = JSON.parse(JSON.stringify(p));
+						var field = ["name"];
+						field.forEach(function (f) {
+							var regex = new RegExp(_this2.keyword, "i");
+							var match = cache[f].match(regex);
+							console.log(match);
+							if (match) cache[f] = cache[f].replace(regex, "<span class='highlight'>" + match[0] + "</span>");
+						});
+
+						console.log(cache.tag);
+						return cache;
+					}).sort(function (a, b) {
+						// return a.tag.charCodeAt(0) - b.tag.charCodeAt(0);
+					});
+				}
+			}
+		});
+
+
+	</script>
 </body>
 
 </html>
