@@ -11,6 +11,7 @@
 	<link href="./plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="./styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="./styles/responsive.css">
+	<link rel="shortcut icon" href="./images/icon.png" />
 </head>
 
 <body>
@@ -147,14 +148,20 @@
 				<div class="container">
 					<div class="products_container">
 						<div class="row">
-							<div class="col-lg-3 col-md-4 col-sm-6 col-6" style="margin-bottom: 10px;" v-for="item in filtered_product">
+							<div class="col-lg-3 col-md-4 col-sm-6 col-6"
+								style="margin-bottom: 10px; min-width: 230px; max-width: 250px;" v-for="item in filtered_product">
 								<div class="card">
-									<img :src="'uploads/product/'+item.img" :title="item.name" class="card-img-top">
-									<div
-										style="background-color: rgba(238,77,45, 0.8); color:white; margin-top: -30px; padding:5px; width:30%; text-align: center;">
-										庫存{{ item.inventory }}</div>
+									<div class="gallery card-img-top">
+										<span></span>
+										<em v-html="'庫存'+item.inventory"></em>
+										<img :src="'uploads/product/'+item.img" :title="item.name">
+									</div>
+
+									<!-- <div
+										style="background-color: rgba(238,77,45, 0.8); color:white; margin-top: -33px; padding:5px; width:30%; text-align: center;">
+										庫存{{ item.inventory }}</div> -->
 									<div class="card-body">
-										<h5 class="card-title" style="color: #000000; min-height: 40px;" v-html="item.name"></h5>
+										<h5 class="card-title" v-html="item.name"></h5>
 
 										<div class="row">
 											<div class="col-8">
@@ -274,6 +281,7 @@ var List=new Vue({el:"#page-list",data:{product:[],list:[],ids:[],totalPrice:0,k
 b.name&&(0<b.inventory?a.count+=1:alert("\u5eab\u5b58\u4e0d\u8db3\uff01"))});this.culTotalPrice()},minus:function(b){this.list.map(function(a){1!=b.count&&a.name==b.name&&(0<b.inventory?--a.count:alert("\u5eab\u5b58\u4e0d\u8db3\uff01"))});this.culTotalPrice()},delItem:function(b){this.list=this.list.filter(function(a){return a.id!=b});this.ids.removeByValue(b);console.log(this.list);this.culTotalPrice()},culTotalPrice:function(){var b=0;this.list.forEach(function(a){b+=parseFloat(a.price*a.count)});
 this.totalPrice=b},searchProduct:function(){var b=this;b.product=""!=b.keyword?allProduct.filter(function(a){return-1!=a.name.toLowerCase().indexOf(b.keyword.toLowerCase())}):allProduct;$(".menu_close").trigger("click")}},computed:{filtered_product:function(){var b=this;return this.product.filter(function(a){var c=!1;["name"].forEach(function(f){-1!=a[f].toLowerCase().indexOf(b.keyword.toLowerCase())&&(c=!0)});return c}).map(function(a){return a}).map(function(a){if(""==b.keyword)return a;var c=JSON.parse(JSON.stringify(a));
 ["name"].forEach(function(a){var e=new RegExp(b.keyword,"i"),d=c[a].match(e);console.log(d);d&&(c[a]=c[a].replace(e,"<span class='highlight'>"+d[0]+"</span>"))});console.log(c.tag);return c}).sort(function(a,b){})}}});
+
 
 	</script>
 </body>
