@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>KiKiSTORE</title>
+	<title>KiKiSTORE 商品頁</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Mike's Sample Project">
@@ -146,58 +146,53 @@
 		<div class="products">
 			<div class="section_container">
 				<div class="container">
-					<div class="products_container">
-						<div class="row">
-							<div class="col-lg-3 col-md-4 col-sm-6 col-6"
-								style="margin-bottom: 10px; min-width: 230px; max-width: 250px;" v-for="item in filtered_product">
-								<div class="card">
-									<div class="gallery card-img-top">
-										<span></span>
-										<em v-html="'庫存'+item.inventory"></em>
-										<img :src="'uploads/product/'+item.img" :title="item.name">
-									</div>
+					<div class="row">
+						<div class="col-lg-2 col-md-3 col-sm-4 col-6" v-for="item in filtered_product">
+							<div class="card">
+								<!-- <div class="gallery">
+									<span></span>
+									<em v-html="'庫存'+item.inventory"></em>
+	
+								</div> -->
+								<div class="card-info">
+									<span v-html="'庫'+item.inventory"></span>
+									<span v-html="'賣'+item.sales"></span>
+								</div>
 
-									<!-- <div
-										style="background-color: rgba(238,77,45, 0.8); color:white; margin-top: -33px; padding:5px; width:30%; text-align: center;">
-										庫存{{ item.inventory }}</div> -->
-									<div class="card-body">
-										<h5 class="card-title" v-html="item.name"></h5>
+								<img class="card-img-top" :src="'uploads/product/'+item.img" :title="item.name">
+								<div class="card-block">
+									<h5 class="card-title" v-html="item.name"></h5>
 
-										<div class="row">
-											<div class="col-8">
-												<h3 style="color: #ee4d2d;">${{ item.price }}</h3>
-												<!-- <span class="card-text" style="color: #ffffff; 
+
+
+
+									<!-- <span class="card-text" style="color: #ffffff; 
 													background-color: #ee4d2d; border-radius: 10px;
 													padding: 2px 10px 2px 10px;">已賣出{{ item.sales }}</span> -->
-											</div>
-											<div class="col-4">
-												<div class="text-center" v-if="item.inventory>0">
-													<button href="#" class="btn btn-primary btn-sm" @click="addToCart(item)"
-														style="background-color: #ee4d2d; border-color: #ee4d2d;">
-														<img src="images/bag.png" width="15" title="加入購物車" />
-													</button>
-
-												</div>
-												<div class="text-center" v-else>
-													<button href="#" class="btn btn-secondary btn-sm disabled"><img src="images/bag.png"
-															title="庫存不足" /></button>
-
-												</div>
-												<!-- <div class="text-center">庫存{{ item.inventory }}</div> -->
-											</div>
-										</div>
 
 
-
-
+								</div>
+								<div class="card-price">
+									<h3 style="color: #ee4d2d;" v-html="'$'+item.price"></h3>
+									<div class="text-center" v-if="item.inventory>0">
+										<button href="#" class="btn btn-primary btn-sm" @click="addToCart(item)"
+											style="background-color: #ee4d2d; border-color: #ee4d2d;">
+											<img src="images/bag.png" width="15" title="加入購物車" />
+										</button>
 
 									</div>
+									<div class="text-center" v-else>
+										<button href="#" class="btn btn-secondary btn-sm disabled"><img src="images/bag.png"
+												title="庫存不足" /></button>
+									</div>
+
 								</div>
 							</div>
 
-						</div>
 
+						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
@@ -232,13 +227,27 @@
 										<td v-html="item.name"></td>
 										<td v-html="item.price"></td>
 										<td>
-											<button type="button" class="btn btn-sm" @click="minus(item)" title="減少">
+											<!-- <button type="button" class="btn btn-sm" @click="minus(item)" title="減少">
 												<i class="fa fa-minus" aria-hidden="true"></i>
 											</button>
 											<span v-html="item.count"></span>
 											<button type="button" class="btn btn-sm" @click="plus(item)" title="增加">
 												<i class="fa fa-plus" aria-hidden="true"></i>
-											</button>
+											</button> -->
+											<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<button class="btn btn-outline-secondary" type="button" @click="minus(item)" title="減少">
+														<i class="fa fa-minus" aria-hidden="true"></i>
+													</button>
+												</div>
+												<input type="text" class="form-control" placeholder="" aria-label="" style="width:10px;"
+													aria-describedby="basic-addon1" v-model="item.count" @change="culTotalPrice">
+												<div class="input-group-append">
+													<button class="btn btn-outline-secondary" type="button" @click="plus(item)" title="增加">
+														<i class=" fa fa-plus" aria-hidden="true"></i>
+													</button>
+												</div>
+											</div>
 										</td>
 										<td>
 											<button type="button" class="btn btn-danger btn-sm" @click="delItem(item.id)" title="刪除">
@@ -274,7 +283,7 @@
 	<script src="./js/custom.js"></script>
 	<script src="./js/vue.min.js"></script>
 	<script>
-		var allProduct=[{id:1,name:"\u6cb9\u8102\u8abf\u8b77\u690d\u8403\u723d\u819a\u6c34",price:880,description:"\u7522\u54c1\u4e3b\u6210\u5206\uff1a\u9ec3\u82a9\u3001\u84b2\u516c\u82f1\u3001\u91d1\u9280\u82b1",inventory:100,sales:null,img:"product_1.jpg"},{id:2,name:"\u690d\u8403\u4fdd\u6fd5\u6d17\u5378\u51dd\u81a0",price:980,description:"\u517c\u5177\u5378\u599d\u3001\u6e05\u6f54\u3001\u8212\u7de9\u3001\u4fdd\u6fd5\u56db\u6548\u5408\u4e00\uff0c\u5176\u7368\u7279\u5fae\u81a0\u593e\u5e36\u5305\u8986\u539f\u7406\u80fd\u5fb9\u5e95\u6e05\u9664\u6bdb\u5b54\u5167\u7684\u6c61\u57a2\u8207\u81c9\u90e8\u5f69\u599d\uff0c\u5373\u523b\u6062\u5fa9\u6e05\u723d\u6f54\u6de8\uff0c\u4e0d\u542b\u7682\u9e7c\u3001\u9999\u6599\u8207\u9152\u7cbe\uff0c\u96f7\u5c04\u8853\u5f8c\u53ca\u654f\u611f\u6027\u808c\u819a\u5747\u53ef\u4f7f\u7528\u3002",
+		var allProduct=[{id:1,name:"\u6cb9\u8102\u8abf\u8b77\u690d\u8403\u723d\u819a\u6c34",price:880,description:"\u7522\u54c1\u4e3b\u6210\u5206\uff1a\u9ec3\u82a9\u3001\u84b2\u516c\u82f1\u3001\u91d1\u9280\u82b1",inventory:100,sales:0,img:"product_1.jpg"},{id:2,name:"\u690d\u8403\u4fdd\u6fd5\u6d17\u5378\u51dd\u81a0",price:980,description:"\u517c\u5177\u5378\u599d\u3001\u6e05\u6f54\u3001\u8212\u7de9\u3001\u4fdd\u6fd5\u56db\u6548\u5408\u4e00\uff0c\u5176\u7368\u7279\u5fae\u81a0\u593e\u5e36\u5305\u8986\u539f\u7406\u80fd\u5fb9\u5e95\u6e05\u9664\u6bdb\u5b54\u5167\u7684\u6c61\u57a2\u8207\u81c9\u90e8\u5f69\u599d\uff0c\u5373\u523b\u6062\u5fa9\u6e05\u723d\u6f54\u6de8\uff0c\u4e0d\u542b\u7682\u9e7c\u3001\u9999\u6599\u8207\u9152\u7cbe\uff0c\u96f7\u5c04\u8853\u5f8c\u53ca\u654f\u611f\u6027\u808c\u819a\u5747\u53ef\u4f7f\u7528\u3002",
 inventory:200,sales:40,img:"product_2.jpg"},{id:3,name:"\u690d\u8403\u6c34\u5408\u4fdd\u6fd5\u971c",price:1580,description:"\u7522\u54c1\u4e3b\u6210\u5206\uff1a\u767e\u5408\u3001\u5c71\u85e5\u3001\u9280\u8033",inventory:300,sales:10,img:"product_3.jpg"},{id:4,name:"\u5b8c\u7f8e\u7121\u7455\u690d\u8403\u4fdd\u6fd5BB\u971c",price:880,description:"\u7522\u54c1\u4e3b\u6210\u5206\uff1a\u9280\u8033\u3001\u767d\u767e\u5408\u3001\u9280\u8033\u3001\u91ce\u5c71\u85e5\u3001\u73bb\u5c3f\u9178",inventory:400,
 sales:10,img:"product_4.jpg"},{id:5,name:"\u690d\u8403\u6c34\u5408\u4fdd\u6fd5\u7cbe\u83ef\u6db2",price:1680,description:"\u7522\u54c1\u4e3b\u6210\u5206\uff1a\u767e\u5408\u3001\u5c71\u85e5\u3001\u9280\u8033",inventory:500,sales:20,img:"product_5.jpg"}];Array.prototype.removeByValue=function(b){for(var a=0;a<this.length;a++)this[a]===b&&(this.splice(a,1),a--);return this};
 var List=new Vue({el:"#page-list",data:{product:[],list:[],ids:[],totalPrice:0,keyword:""},created:function(){this.product=JSON.parse(JSON.stringify(allProduct))},methods:{addToCart:function(b){-1==this.ids.indexOf(b.id)?0<b.inventory?(b.count=1,this.list.push(b),this.ids.push(b.id)):alert("\u5eab\u5b58\u4e0d\u8db3\uff01"):this.list.map(function(a){a.name==b.name&&(0<b.inventory?a.count+=1:alert("\u5eab\u5b58\u4e0d\u8db3\uff01"))});this.culTotalPrice()},plus:function(b){this.list.map(function(a){a.name==
