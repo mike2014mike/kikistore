@@ -1825,11 +1825,13 @@ section
   font-size: 12px;
   color: white;
 	font-family: verdana, sans;
-	min-height: 25px;
+	min-height: 40px;
 	background-color: rgba(238,77,45, 0.75);
 	display:flex;
 	justify-content: center;
 	align-items: center;
+	border-radius: 10px;
+	padding: 5px;
 }
 
 .card-body{
