@@ -109,7 +109,7 @@ p a:hover::after
 }
 ::selection
 {
-	background: rgba(187,228,50,0.75);
+	background: rgba(238,77,45,0.75);
 	color: #FFFFFF;
 }
 p::selection
@@ -1794,13 +1794,16 @@ section
   padding: 0px 5px;
 }
 
-.gallery{
-	padding: 10px;
-  margin: 0;
-  float: left;
-  position: relative;
-  max-width: 180px;
-  max-height: 130px;
+
+
+.col-lg-3, .col-md-4, .col-sm-6, .col-6{
+	padding: 0;
+}
+
+.card {
+  margin: 2px;
+  flex: 2;
+	display: flex; 
 }
 
 .card:hover {
@@ -1810,42 +1813,38 @@ section
 	transition-delay: 0s !important;
 }
 
-.gallery span{
-	width: 30px;
-  height: 60px;
-  display: block;
-  position: absolute;
-  top: 7px;
-  left: 9px;
-  background: url(../images/paper-clip-mini.png) no-repeat;
-  z-index: 3;
+
+.card-block {
+  padding: 10px;
+	margin-top: -30px;
+  flex: 1;
 }
 
-.gallery em {
-	background: rgba(255,255,255, 0.75); 
-	color: #000;
-	font-style: normal;
-	padding: 2px 8px 0 22px;
-	display: block;
-	position: absolute;
-	top: 20px;
-	left: 5px;
-	border: 1px solid rgba(0,0,0, 0.2); ;
-}
 
-.gallery img {
-	max-width: 182px;
-	background: #fff;
-	border: solid 1px #ccc;
-	padding: 2px;
-}
-
-.card-title{
-	display: flex;
+.card-title {
+  font-size: 12px;
+  color: white;
+	font-family: verdana, sans;
+	min-height: 25px;
+	background-color: rgba(238,77,45, 0.75);
+	display:flex;
 	justify-content: center;
-	align-items: center;	
-	color: #fff;
-	background-color: rgba(238,77,45, 0.75); 
-	min-height: 40px;
-	max-width: 158px;
+	align-items: center;
+}
+
+.card-body{
+	padding: 10px;
+}
+
+.card-price{
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	margin-top: -30px;
+}
+
+.card-info{
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
 }
